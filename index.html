@@ -37,21 +37,24 @@ var person = {
 
 var resultBox = document.getElementById('result');
 resultBox.innerText = resultBox.innerText + person.getName.call(user1) + '\n';
+//Executes person.getName in the context/scope of user1. Gets the name of user 1.
 
 person.setName.call(user1, 'Chase') + '\n';
+//Changes the value of the name property of the user1 object
 resultBox.innerText = resultBox.innerText + person.getName.call(user1) + '\n';
 
 person.setAgeAndName.call(user1, [
     'Cameron',
     '29'
 ]);
+//Using CALL set the name as "Cameron, 29" and age as undefined
 resultBox.innerText = resultBox.innerText + person.getAgeAndName.call(user1) + '\n';
 
 person.setAgeAndName.apply(user1, [
     'Charlie',
     '25'
 ]);
-
+//Using APPLY will set the name and age using the array indexes as parameters for the setAgeAndName function
 resultBox.innerText = resultBox.innerText + person.getAgeAndName.apply(user1) + '\n';
 </script>
 
