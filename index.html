@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<body>
+<div id="result"></div>
+
+<script>
+var user1 = {
+        name: 'Corey',
+        age: 22
+    },
+    user2 = {
+        name: 'Gabby',
+        age: 23
+    };
+
+var person = {
+    getAge: function() {
+        return this.age;
+    },
+    getName: function() {
+        return this.name;
+    },
+    setAge: function(age) {
+        this.age = age;
+    },
+    setName: function(name) {
+        this.name = name;
+    },
+    setAgeAndName: function(name, age) {
+        this.age = age;
+        this.name = name;
+    },
+    getAgeAndName: function() {
+        return this.name + ' ' + this.age;
+    }
+};
+
+var resultBox = document.getElementById('result');
+resultBox.innerText = resultBox.innerText + person.getName.call(user1) + '\n';
+
+person.setName.call(user1, 'Chase') + '\n';
+resultBox.innerText = resultBox.innerText + person.getName.call(user1) + '\n';
+
+person.setAgeAndName.call(user1, [
+    'Cameron',
+    '29'
+]);
+resultBox.innerText = resultBox.innerText + person.getAgeAndName.call(user1) + '\n';
+
+person.setAgeAndName.apply(user1, [
+    'Charlie',
+    '25'
+]);
+
+resultBox.innerText = resultBox.innerText + person.getAgeAndName.apply(user1) + '\n';
+</script>
+
+</body>
+</html>
